@@ -5,7 +5,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-import StringIO
+from io import StringIO
 import contextlib
 import fnmatch
 import functools
@@ -120,9 +120,9 @@ def captureOutput(func, *args, **kwargs):
     tuple (stdout, stderr) as strings.
     """
     stdout = sys.stdout
-    sys.stdout = StringIO.StringIO()
+    sys.stdout = StringIO()
     stderr = sys.stderr
-    sys.stderr = StringIO.StringIO()
+    sys.stderr = StringIO()
     try:
         func(*args, **kwargs)
         stdoutOutput = sys.stdout.getvalue()
